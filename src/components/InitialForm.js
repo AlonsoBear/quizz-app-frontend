@@ -5,6 +5,7 @@ import { BlockHeader,
          TextInput } from "../basic"; 
 import { useLocalStorage } from "../hooks";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"
 
 const BlockContainer = styled.div`
     position: absolute;
@@ -42,12 +43,14 @@ const ErrorMessage = styled.div`
 export const InitialForm = () => {
     const [name, setName] = useLocalStorage("name", "")
     const [errorMessage, setErrorMessage] = useState("")
+    const navigate = useNavigate()
 
     const validateName = () => {
         if(name.length < 5){
             setErrorMessage("Name must be at least 5 characters long")
         } else {
             setErrorMessage("")
+            navigate('/welcome')
         }
     }
 

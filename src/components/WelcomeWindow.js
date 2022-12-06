@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { BlockHeader,
          Button,
          Text } from "../basic"; 
+import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
 const BlockContainer = styled.div`
     position: absolute;
@@ -26,15 +28,30 @@ const TextContainer = styled.div`
 `
 
 export const WelcomeWindow = () => {
+    const navigate = useNavigate()
+    
+    const getName = () => {
+        const name = JSON.parse(localStorage.getItem("name"))
+        console.log(name)
+        if(name.length < 5){
+            return <Navigate to="/login" replace={true}/>
+        }
+        return name
+    }
+
+    const moveToCategories = () => {
+        return navigate("/veterinary")
+    }
+
     return(<>
         <BlockContainer>
             <BlockHeader>BIBRAIN</BlockHeader>
             <TextContainer>
-                <Text>Welcome to this community Alonso</Text>
+                <Text>Welcome to this community {getName()}</Text>
                 <Text>Currently we only offer questions about Veterinary</Text>
                 <Text>We are eagerly working to bring more Topics for you to study</Text>
 
-                <Button>Explore Categories</Button>            
+                <Button onClick={moveToCategories}>Explore Categories</Button>            
             </TextContainer>
         </BlockContainer>
     </>)
