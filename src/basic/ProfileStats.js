@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { useState } from "react";
 
 const ProfileStatsContainer = styled.div`
-    width: 100%;
+    width: 20%;
+    height: 24.479vw;
     background-color: white;
     box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.2);
     padding: 30px;

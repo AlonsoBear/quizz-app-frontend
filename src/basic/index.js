@@ -5,6 +5,7 @@ import { Button } from "./Button"
 import { Category } from "./Category";
 import { ProfileStats } from "./ProfileStats";
 import { Answer } from "./Answer";
+import { Option } from "./Option";
 
 export {
     Text,
@@ -13,5 +14,6 @@ export {
     Button,
     Category,
     ProfileStats,
-    Answer
+    Answer,
+    Option
 }

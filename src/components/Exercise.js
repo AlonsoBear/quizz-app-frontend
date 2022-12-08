@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { ProfileStats, BlockHeader, Answer } from "../basic";
+import { ProfileStats, 
+         BlockHeader,
+         Answer,
+         Option } from "../basic";
+import { Question } from "./Question";
 
 const BlockContainer = styled.div`
     position: absolute;
@@ -24,8 +28,8 @@ export const Exercise = () => {
             <BlockHeader>VETERINARY</BlockHeader>
             <ContentContainer>
                 <ProfileStats/>
-                <ProfileStats/>
-                <Answer/>
+                <Question/>
+                <Answer isAnswered={false} description="this is my test description" reference="google"/>
             </ContentContainer>
         </BlockContainer>
     </>)
