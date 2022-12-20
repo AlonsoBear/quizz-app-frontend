@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Categories, WelcomeWindow } from "./";
+import { Categories, Exercise } from "./";
 import axios from "axios";
 
 const QuizContainer = styled.div`
@@ -9,6 +9,7 @@ const QuizContainer = styled.div`
 export const Quiz = ({ children, onClick }) => {
     const [chosenCategories, setChosenCategories] = useState([])
     const [categories, setCategories] = useState([])
+    const [topic, setTopic] = useState(undefined)
 
     useEffect(() => {
         const response = axios({
@@ -16,17 +17,19 @@ export const Quiz = ({ children, onClick }) => {
             url: "http://localhost:5000/exercises/topics",
             responseType: "json"
         }).then(response => {
+            const topic = response.data.data[0]
+            setTopic(topic._id)
             setCategories(response.data.data[0].categories)
         })
     }, [])
 
-    useEffect(() => {
-        console.log(chosenCategories)
-    }, [chosenCategories])
+    // useEffect(() => {
+    //     console.log(chosenCategories)
+    // }, [chosenCategories])
 
     return(<>
         { chosenCategories.length > 0 ?
-            <WelcomeWindow/> :
+            <Exercise topicId={topic} categories={chosenCategories}/> :
             <Categories 
                 categories={categories}
                 setChosenCategories={setChosenCategories} 

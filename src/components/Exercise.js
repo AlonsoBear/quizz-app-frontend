@@ -4,6 +4,8 @@ import { ProfileStats,
          Answer,
          Option } from "../basic";
 import { Question } from "./Question";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const BlockContainer = styled.div`
     position: absolute;
@@ -20,16 +22,32 @@ const ContentContainer = styled.div`
     gap: 20px
 `
 
-export const Exercise = () => {
-    
+export const Exercise = ({ topicId, categories }) => {
+    const [isAnswered, setIsAnswered] = useState(false)
+    const [questions, setQuestions] = useState([])
+
+    useEffect(() => {
+        const response = axios({
+            method: 'get',
+            url: "http://localhost:5000/exercises",
+            responseType: "json",
+            params: {
+                topic: topicId,
+                categories: categories
+            }
+        }).then(response => {
+            setQuestions(response.data.data)
+        })
+    }, [])
 
     return(<>
         <BlockContainer>
+            {questions.length > 0 ? console.log(questions[0]._id) : null}
             <BlockHeader>VETERINARY</BlockHeader>
             <ContentContainer>
                 <ProfileStats/>
-                <Question/>
-                <Answer isAnswered={false} description="this is my test description" reference="google"/>
+                <Question setAnswer={setIsAnswered} isAnswered={isAnswered}/>
+                <Answer isAnswered={isAnswered} description="this is my test description" reference="google"/>
             </ContentContainer>
         </BlockContainer>
     </>)

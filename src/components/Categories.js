@@ -53,7 +53,6 @@ export const Categories = ({ categories, setChosenCategories }) => {
     }
 
     const handleSubmitCategories = () => {
-        console.log(chosenCategories)
         setChosenCategories(chosenCategories)
     }
 
