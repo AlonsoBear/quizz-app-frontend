@@ -42,12 +42,8 @@ export const Categories = ({ categories, setChosenCategories }) => {
         if(chosenCategories.includes(val)) {
             const newCategories = chosenCategories.filter(category => category !== val)
             chosenCategories = newCategories
-            // console.log(chosenCategories)
-            // setChosenCategories(newCategories)
         } else {
             chosenCategories.push(val)
-            // console.log(chosenCategories)
-            // setChosenCategories(newCategories)
         }
 
     }

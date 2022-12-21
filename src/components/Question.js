@@ -19,8 +19,8 @@ const QuestionContainer = styled.div`
     flex-grow: 1;
 `
 
-export const Question = ({ question, setAnswer, isAnswered }) => {
-
+export const Question = ({ exercise, setAnswer, isAnswered }) => {
+    console.log(exercise)
     const handleAnswer = () => {
         setAnswer(true)
     }
@@ -28,13 +28,13 @@ export const Question = ({ question, setAnswer, isAnswered }) => {
     return(<>
         <BlockContainer>
             <QuestionContainer>
-                Que pedo broooooooo, como andas?
-                Que pedo broooooooo, como andas?
+                {exercise.question}
             </QuestionContainer>
-            <Option isCorrect={true} isActive={isAnswered} onClick={handleAnswer}>Hello</Option>
-            <Option isCorrect={false} isActive={isAnswered} onClick={handleAnswer}>Hello</Option>
-            <Option isCorrect={false} isActive={isAnswered} onClick={handleAnswer}>Hello</Option>
-            <Option isCorrect={false} isActive={isAnswered} onClick={handleAnswer}>Hello</Option>
+            {
+                exercise.options.map(option => {
+                    return <Option isCorrect={option.isCorrect} isActive={isAnswered} onClick={handleAnswer}>{option.answer}</Option>
+                })
+            }
         </BlockContainer>
     </>)
 }

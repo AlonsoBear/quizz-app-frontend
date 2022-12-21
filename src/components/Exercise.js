@@ -24,7 +24,7 @@ const ContentContainer = styled.div`
 
 export const Exercise = ({ topicId, categories }) => {
     const [isAnswered, setIsAnswered] = useState(false)
-    const [questions, setQuestions] = useState([])
+    const [exercises, setExercises] = useState([])
 
     useEffect(() => {
         const response = axios({
@@ -36,18 +36,27 @@ export const Exercise = ({ topicId, categories }) => {
                 categories: categories
             }
         }).then(response => {
-            setQuestions(response.data.data)
+            setExercises(response.data.data)
         })
     }, [])
 
+    
+    useEffect(() => {
+        const newQuestions = exercises
+        newQuestions.pop()
+        setExercises(newQuestions)
+    }, [isAnswered])
+
+    if(exercises.length == 0)
+        return(<></>)
     return(<>
         <BlockContainer>
-            {questions.length > 0 ? console.log(questions[0]._id) : null}
+      
             <BlockHeader>VETERINARY</BlockHeader>
             <ContentContainer>
                 <ProfileStats/>
-                <Question setAnswer={setIsAnswered} isAnswered={isAnswered}/>
-                <Answer isAnswered={isAnswered} description="this is my test description" reference="google"/>
+                <Question exercise={exercises[exercises.length - 1]} setAnswer={setIsAnswered} isAnswered={isAnswered}/>
+                <Answer isAnswered={isAnswered} description={exercises[exercises.length - 1].description} reference={exercises[exercises.length - 1].reference}/>
             </ContentContainer>
         </BlockContainer>
     </>)

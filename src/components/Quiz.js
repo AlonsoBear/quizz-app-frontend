@@ -12,6 +12,7 @@ export const Quiz = ({ children, onClick }) => {
     const [topic, setTopic] = useState(undefined)
 
     useEffect(() => {
+        console.log("Quiz");
         const response = axios({
             method: 'get',
             url: "http://localhost:5000/exercises/topics",
@@ -22,10 +23,6 @@ export const Quiz = ({ children, onClick }) => {
             setCategories(response.data.data[0].categories)
         })
     }, [])
-
-    // useEffect(() => {
-    //     console.log(chosenCategories)
-    // }, [chosenCategories])
 
     return(<>
         { chosenCategories.length > 0 ?
