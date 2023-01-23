@@ -9,10 +9,11 @@ const BlockContainer = styled.div`
 const AnswerContainer = styled.div `
     background-color: white;
     box-shadow: 0.260vw 0.260vw 0.313vw rgba(0, 0, 0, 0.2);
-    padding: 1.563vw;
     border-radius: 1.042vw;
-    padding: 1.302vw;
     position: relative;
+    padding: .302vw;
+    padding-top: .7vw; 
+    padding-bottom: .7vw; 
     margin-bottom: 1.042vw;
     height: 24.479vw;
     font-family: "Helvetica Neue";
@@ -42,7 +43,9 @@ const AnswerText = styled.div`
 `
 
 const AnswerTextContainer = styled.div`
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 1.302vw;
 `
 
 const AnswerReference = styled.div`
