@@ -3,12 +3,12 @@ import { useState } from "react";
 
 const CategoryContainer = styled.div`
     font-family: "Lao Sangam MN";
-    font-size: 15px;
+    font-size: 0.781vw;
     color: #707070;
-    border: 1px solid #707070;
-    border-radius: 20px;
+    border: 0.052vw solid #707070;
+    border-radius: 1.042vw;
     text-align: center;
-    padding: 7px 0;
+    padding: 0.365vw 0;
     ${props => {
         if (props.active) return "background-color: #1A95FF; color: white; border-color: #1A95FF;"
     }}

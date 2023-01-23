@@ -12,27 +12,27 @@ const BlockContainer = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 574px;
+    width: 29.896vw;
     height: auto;
 `
 
 const TextContainer = styled.div`
     width: 100%;
     background-color: white;
-    box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.2);
-    padding: 30px;
-    border-radius: 20px;
+    box-shadow: 0.260vw 0.260vw 0.313vw rgba(0, 0, 0, 0.2);
+    padding: 1.563vw;
+    border-radius: 1.042vw;
 
     button:last-child{
-        margin-top: 30px;
+        margin-top: 1.563vw;
     }
 `
 
 const CategoriesList = styled.div`
     display: grid;
     grid-template-columns: auto auto auto;
-    gap: 25px 45px;
-    margin-top: 35px;
+    gap: 1.302vw 2.344vw;
+    margin-top: 1.823vw;
 `
 
 export const Categories = ({ categories, setChosenCategories }) => {

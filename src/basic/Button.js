@@ -4,11 +4,11 @@ const ButtonContainer = styled.button`
     width: 100%;
     background-color: #1A95FF;
     font-family: 'Lao Sangam MN';
-    font-size: 25px;
+    font-size: 1.302vw;
     color: white;
-    border-radius: 20px;
+    border-radius: 1.042vw;
     border: none;
-    padding: 15px;
+    padding: 0.781vw;
     transition: .3s background-color;
 
     &:hover {

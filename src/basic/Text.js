@@ -15,7 +15,7 @@ const TextWrapper = styled.p`
     margin: 0;
     ${props => props.fontSize !== undefined ? 
         "font-size: " + props.fontSize + ";" :
-        "font-size: 25px;" }
+        "font-size: 1.302vw;" }
 
     ${props => props.color !== undefined ? 
         "color: " + props.color + ";" :

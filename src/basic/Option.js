@@ -4,10 +4,10 @@ import { useState } from "react";
 const OptionContainer = styled.div`
     width: 100%;
     background-color: white;
-    box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    border-radius: 20px;
-    font-size: 20px;
+    box-shadow: 0.260vw 0.260vw 0.313vw rgba(0, 0, 0, 0.2);
+    padding: 1.042vw;
+    border-radius: 1.042vw;
+    font-size: 1.042vw;
     transition: .3s background-color, color;
     display: flex;
     align-items: center;
@@ -30,7 +30,7 @@ const OptionContainer = styled.div`
 `
 
 const CircleContainer = styled.div`
-    margin-right: 15px;
+    margin-right: 0.781vw;
     display: flex;
     justify-content: center;
     align-items: center;

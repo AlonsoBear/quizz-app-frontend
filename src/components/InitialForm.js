@@ -13,31 +13,31 @@ const BlockContainer = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 574px;
+    width: 29.896vw;
     height: auto;
 `
 
 const FormContainer = styled.div`
     width: 100%;
     background-color: white;
-    box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.2);
-    padding: 30px;
-    border-radius: 20px;
+    box-shadow: 0.260vw 0.260vw 0.313vw rgba(0, 0, 0, 0.2);
+    padding: 1.563vw;
+    border-radius: 1.042vw;
 `
 
 const InputContainer = styled.div`
-    margin-top: 50px;
+    margin-top: 2.604vw;
     button:last-child {
-        margin-top: 20px;
+        margin-top: 1.042vw;
     }
 `
 
 const ErrorMessage = styled.div`
     color: #C17272;
-    font-size: 15px;
+    font-size: 0.781vw;
     width: 100%;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 0.781vw;
 `
 
 export const InitialForm = () => {

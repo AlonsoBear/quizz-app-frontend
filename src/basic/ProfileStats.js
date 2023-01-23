@@ -5,23 +5,23 @@ const ProfileStatsContainer = styled.div`
     width: 20%;
     height: 24.479vw;
     background-color: white;
-    box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.2);
-    padding: 30px;
-    border-radius: 20px;
-    padding: 25px;
+    box-shadow: 0.260vw 0.260vw 0.313vw rgba(0, 0, 0, 0.2);
+    padding: 1.563vw;
+    border-radius: 1.042vw;
+    padding: 1.302vw;
 
     button:last-child{
-        margin-top: 30px;
+        margin-top: 1.563vw;
     }
 `
 
 const ProfileName = styled.div`
-    font-size: 30px;
+    font-size: 1.563vw;
     font-family: "Lao Sangam MN";
-    padding: 10px;
+    padding: 0.521vw;
     color: #313131;
     text-align: center;
-    border-bottom: solid 1px #707070;
+    border-bottom: solid 0.052vw #707070;
 `
 
 export const ProfileStats = () => {

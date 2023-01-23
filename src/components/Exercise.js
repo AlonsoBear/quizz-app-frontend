@@ -19,7 +19,7 @@ const BlockContainer = styled.div`
 
 const ContentContainer = styled.div`
     display: flex;
-    gap: 20px
+    gap: 1.042vw
 `
 
 export const Exercise = ({ topicId, categories }) => {
