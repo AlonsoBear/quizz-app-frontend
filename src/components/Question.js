@@ -7,16 +7,18 @@ const BlockContainer = styled.div`
     height: 24.479vw;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.042vw;
 `
 
 const QuestionContainer = styled.div`
     width: 100%;
     background-color: white;
-    box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.2);
-    padding: 30px;
-    border-radius: 20px;
+    box-shadow: 0.260vw 0.260vw 0.313vw rgba(0, 0, 0, 0.2);
+    padding: 1.563vw;
+    border-radius: 1.042vw;
     flex-grow: 1;
+    font-family: "Helvetica Neue";
+    font-size: 1.042vw;
 `
 
 export const Question = ({ exercise, setAnswer, isAnswered }) => {

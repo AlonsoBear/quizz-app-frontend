@@ -40,12 +40,19 @@ export const Exercise = ({ topicId, categories }) => {
         })
     }, [])
 
-    
-    useEffect(() => {
-        const newQuestions = exercises
-        newQuestions.pop()
-        setExercises(newQuestions)
-    }, [isAnswered])
+    // useEffect(() => {
+    //     console.log("heheh")
+    //     const newExercises = [...exercises]
+    //     newExercises.pop()
+    //     setExercises(newExercises)
+    // }, [isAnswered])
+
+    const handleNextQuestion = () => {
+        const newExercises = [...exercises]
+        newExercises.pop()
+        setExercises(newExercises)
+        setIsAnswered(false)
+    }
 
     if(exercises.length == 0)
         return(<></>)
@@ -56,7 +63,7 @@ export const Exercise = ({ topicId, categories }) => {
             <ContentContainer>
                 <ProfileStats/>
                 <Question exercise={exercises[exercises.length - 1]} setAnswer={setIsAnswered} isAnswered={isAnswered}/>
-                <Answer isAnswered={isAnswered} description={exercises[exercises.length - 1].description} reference={exercises[exercises.length - 1].reference}/>
+                <Answer nextQuestion={handleNextQuestion} isAnswered={isAnswered} description={exercises[exercises.length - 1].description} reference={exercises[exercises.length - 1].reference}/>
             </ContentContainer>
         </BlockContainer>
     </>)

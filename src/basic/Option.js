@@ -37,13 +37,16 @@ const CircleContainer = styled.div`
 `
 
 export const Option = ({ children, isCorrect, isActive, onClick}) => {
-    
+    let strokeColor = "black"
+    if (isActive && isCorrect) strokeColor = "#24BD04"
+    else if (isActive) strokeColor = "#C71313"
 
     return(<>
         <OptionContainer isCorrect={isCorrect} isActive={isActive} onClick={onClick}>
             <CircleContainer>
                 <svg height="20" width="20">
-                    <circle cx="10" cy="10" r="10" stroke="black" stroke-width="1" fill="transparent" />
+                    <circle cx="10" cy="10" r="10" stroke={strokeColor} stroke-width="1" fill="transparent" />
+                    { isActive ? <circle cx="10" cy="10" r="5" stroke={strokeColor} stroke-width="1" fill={strokeColor} /> : null}                    
                 </svg>
             </CircleContainer>
             {children}

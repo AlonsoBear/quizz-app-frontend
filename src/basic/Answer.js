@@ -8,12 +8,12 @@ const BlockContainer = styled.div`
 
 const AnswerContainer = styled.div `
     background-color: white;
-    box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.2);
-    padding: 30px;
-    border-radius: 20px;
-    padding: 25px;
+    box-shadow: 0.260vw 0.260vw 0.313vw rgba(0, 0, 0, 0.2);
+    padding: 1.563vw;
+    border-radius: 1.042vw;
+    padding: 1.302vw;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 1.042vw;
     height: 24.479vw;
     font-family: "Helvetica Neue";
 
@@ -34,35 +34,37 @@ const AnswerPlaceholder = styled.div`
 `
 
 const AnswerText = styled.div`
+    font-family: "Helvetica Neue";
+    font-size: 1.042vw;
     color: #707070;
     overflow: hidden;
-    ${
-        props => {
-            return 'height: ' + props.height + "%;"
-        }
-    }
+    margin-bottom: 1.042vw;
 `
 
 const AnswerTextContainer = styled.div`
-    height: 100%;
+    overflow: scroll;
 `
 
-const AnswerReference = styled.a`
+const AnswerReference = styled.div`
     color: #1A95FF
 `
 
 
-export const Answer = ({isAnswered, description, reference}) => {
+export const Answer = ({isAnswered, description, reference, nextQuestion}) => {
+    description = description.split("<br/>")
 
     return(<>
+
         <BlockContainer>
             <AnswerContainer>
                 { isAnswered ? 
                 <AnswerTextContainer>
-                    <AnswerText height={93}>{description}</AnswerText> 
-                    <AnswerText height={7}>
-                        <AnswerReference href={reference}>
-                            Reference
+                    { description.map(paragraph => {
+                        return <AnswerText>{paragraph}</AnswerText> 
+                    })}
+                    <AnswerText>
+                        <AnswerReference>
+                            {reference}
                         </AnswerReference>
                     </AnswerText> 
                 </AnswerTextContainer>
@@ -70,7 +72,7 @@ export const Answer = ({isAnswered, description, reference}) => {
                 <AnswerPlaceholder>Answer will be displayed here</AnswerPlaceholder>
                 }
             </AnswerContainer>
-            <Button>Next Question</Button>
+            <Button onClick={nextQuestion}>Next Question</Button>
         </BlockContainer>
     </>
     )
