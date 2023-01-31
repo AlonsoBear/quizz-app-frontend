@@ -42,7 +42,7 @@ export const Option = ({ children, isCorrect, isActive, onClick}) => {
     else if (isActive) strokeColor = "#C71313"
 
     return(<>
-        <OptionContainer isCorrect={isCorrect} isActive={isActive} onClick={onClick}>
+        <OptionContainer isCorrect={isCorrect} isActive={isActive} onClick={() => onClick(isCorrect)}>
             <CircleContainer>
                 <svg height="20" width="20">
                     <circle cx="10" cy="10" r="10" stroke={strokeColor} stroke-width="1" fill="transparent" />

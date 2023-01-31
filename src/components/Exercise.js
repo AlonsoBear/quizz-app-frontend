@@ -25,6 +25,7 @@ const ContentContainer = styled.div`
 export const Exercise = ({ topicId, categories }) => {
     const [isAnswered, setIsAnswered] = useState(false)
     const [exercises, setExercises] = useState([])
+    const [points, setPoints] = useState(0)
 
     useEffect(() => {
         const response = axios({
@@ -54,15 +55,19 @@ export const Exercise = ({ topicId, categories }) => {
         setIsAnswered(false)
     }
 
+    const handlePoints = (isCorrect) => {
+        if (isCorrect)
+            setPoints(points + 5)    
+    }
+
     if(exercises.length == 0)
         return(<></>)
     return(<>
         <BlockContainer>
-      
             <BlockHeader>VETERINARY</BlockHeader>
             <ContentContainer>
-                <ProfileStats/>
-                <Question exercise={exercises[exercises.length - 1]} setAnswer={setIsAnswered} isAnswered={isAnswered}/>
+                <ProfileStats points={points} category={exercises[exercises.length - 1].categories[0]}/>
+                <Question exercise={exercises[exercises.length - 1]} setAnswer={setIsAnswered} isAnswered={isAnswered} handlePoints={handlePoints}/>
                 <Answer nextQuestion={handleNextQuestion} isAnswered={isAnswered} description={exercises[exercises.length - 1].description} reference={exercises[exercises.length - 1].reference}/>
             </ContentContainer>
         </BlockContainer>

@@ -21,9 +21,11 @@ const QuestionContainer = styled.div`
     font-size: 1.042vw;
 `
 
-export const Question = ({ exercise, setAnswer, isAnswered }) => {
-    console.log(exercise)
-    const handleAnswer = () => {
+export const Question = ({ exercise, setAnswer, isAnswered, handlePoints }) => {
+
+    const handleAnswer = (isCorrect) => {
+        if (isCorrect)
+            handlePoints(isCorrect)
         setAnswer(true)
     }
 
