@@ -6,6 +6,7 @@ import { ProfileStats,
 import { Question } from "./Question";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useLocalStorage } from "../hooks";
 
 const BlockContainer = styled.div`
     position: absolute;
@@ -22,10 +23,25 @@ const ContentContainer = styled.div`
     gap: 1.042vw
 `
 
+const initTotalPointsLS = (initialPoints) => {
+    localStorage.setItem("totalPoints", initialPoints)
+    return initialPoints
+}
+
+const addToTotalPoints = (amount) => {
+    const currentPonts = localStorage.getItem("totalPoints")
+    const newPoints = amount + +currentPonts
+    localStorage.setItem("totalPoints", newPoints)
+    return newPoints
+}
+
 export const Exercise = ({ topicId, categories }) => {
     const [isAnswered, setIsAnswered] = useState(false)
     const [exercises, setExercises] = useState([])
     const [points, setPoints] = useState(0)
+    const totalPoints = localStorage.getItem("totalPoints") ? 
+        localStorage.getItem("totalPoints") :
+        initTotalPointsLS(0)
 
     useEffect(() => {
         const response = axios({
@@ -41,13 +57,6 @@ export const Exercise = ({ topicId, categories }) => {
         })
     }, [])
 
-    // useEffect(() => {
-    //     console.log("heheh")
-    //     const newExercises = [...exercises]
-    //     newExercises.pop()
-    //     setExercises(newExercises)
-    // }, [isAnswered])
-
     const handleNextQuestion = () => {
         const newExercises = [...exercises]
         newExercises.pop()
@@ -56,8 +65,12 @@ export const Exercise = ({ topicId, categories }) => {
     }
 
     const handlePoints = (isCorrect) => {
-        if (isCorrect)
-            setPoints(points + 5)    
+        if (isCorrect){
+            setPoints(points + 5)
+            addToTotalPoints(5)
+        }
+        else
+            setPoints(points - 5)
     }
 
     if(exercises.length == 0)

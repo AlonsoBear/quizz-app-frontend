@@ -65,6 +65,7 @@ const ProfileGridElement = styled.div`
     font-family: "Helvetica Neue";
     font-size: 1.042vw;
     color: #707070;
+    color: ${props => props.color ? `${props.color};` : "#707070;"}
     ${props => {
         return props.float == "right" ? 'text-align: right;' : null
     }}
@@ -87,9 +88,9 @@ export const ProfileStats = ({category, points}) => {
                 <ProfileGridElement>Category:</ProfileGridElement>
                 <ProfileGridElement float="right">{category}</ProfileGridElement>
                 <ProfileGridElement>Quiz Points:</ProfileGridElement>
-                <ProfileGridElement float="right">{points}</ProfileGridElement>
+                <ProfileGridElement float="right" color={points < 0 ? "red" : null}>{points}</ProfileGridElement>
                 <ProfileGridElement>Total Points</ProfileGridElement>
-                <ProfileGridElement float="right">486</ProfileGridElement>
+                <ProfileGridElement float="right">{localStorage.getItem("totalPoints")}</ProfileGridElement>
             </ProfileStatsGrid>
         </ProfileStatsContainer>
         <Patreon href="https://www.google.com">

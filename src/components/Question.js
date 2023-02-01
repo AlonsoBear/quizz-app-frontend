@@ -24,8 +24,7 @@ const QuestionContainer = styled.div`
 export const Question = ({ exercise, setAnswer, isAnswered, handlePoints }) => {
 
     const handleAnswer = (isCorrect) => {
-        if (isCorrect)
-            handlePoints(isCorrect)
+        handlePoints(isCorrect)
         setAnswer(true)
     }
 
