@@ -1,12 +1,10 @@
 import styled from "styled-components";
 import { ProfileStats, 
          BlockHeader,
-         Answer,
-         Option } from "../basic";
+         Answer } from "../basic";
 import { Question } from "./Question";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useLocalStorage } from "../hooks";
 
 const BlockContainer = styled.div`
     position: absolute;

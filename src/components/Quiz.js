@@ -3,9 +3,6 @@ import styled from "styled-components";
 import { Categories, Exercise } from "./";
 import axios from "axios";
 
-const QuizContainer = styled.div`
-`
-
 export const Quiz = ({ children, onClick }) => {
     const [chosenCategories, setChosenCategories] = useState([])
     const [categories, setCategories] = useState([])

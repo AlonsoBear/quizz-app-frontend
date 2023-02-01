@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Option } from "../basic";
-import { useState } from "react";
 
 const BlockContainer = styled.div`
     width: 50%;

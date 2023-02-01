@@ -3,8 +3,6 @@ import { BlockHeader,
          Button,
          Text,
          Category } from "../basic"; 
-import { useEffect, useState } from "react";
-import axios from "axios";
 
 const BlockContainer = styled.div`
     position: absolute;

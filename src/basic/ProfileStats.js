@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useState } from "react";
 
 const BlockContainer = styled.div`
     width: 20%;
@@ -67,7 +66,7 @@ const ProfileGridElement = styled.div`
     color: #707070;
     color: ${props => props.color ? `${props.color};` : "#707070;"}
     ${props => {
-        return props.float == "right" ? 'text-align: right;' : null
+        return props.float === "right" ? 'text-align: right;' : null
     }}
 `
 
