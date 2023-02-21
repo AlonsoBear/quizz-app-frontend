@@ -4,6 +4,7 @@ import { Categories } from "./Categories";
 import { Quiz } from "./Quiz";
 import { Exercise } from "./Exercise";
 import { Question } from "./Question";
+import { Dashboard } from "./Dashboard";
 
 export {
     InitialForm,
@@ -11,5 +12,6 @@ export {
     Categories,
     Quiz,
     Exercise,
-    Question
+    Question,
+    Dashboard
 }

@@ -6,6 +6,7 @@ import { Category } from "./Category";
 import { ProfileStats } from "./ProfileStats";
 import { Answer } from "./Answer";
 import { Option } from "./Option";
+import { DashboardInput } from "./DashboardInput";
 
 export {
     Text,
@@ -15,5 +16,6 @@ export {
     Category,
     ProfileStats,
     Answer,
-    Option
+    Option,
+    DashboardInput
 }

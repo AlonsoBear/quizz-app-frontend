@@ -32,8 +32,7 @@ export const WelcomeWindow = () => {
     
     const getName = () => {
         const name = JSON.parse(localStorage.getItem("name"))
-        console.log(name)
-        if(name.length < 5){
+        if(!name){
             return <Navigate to="/login" replace={true}/>
         }
         return name

@@ -50,7 +50,7 @@ export const InitialForm = () => {
             setErrorMessage("Name must be at least 5 characters long")
         } else {
             setErrorMessage("")
-            navigate('/welcome')
+            navigate('/')
         }
     }
 
