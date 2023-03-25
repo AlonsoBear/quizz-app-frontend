@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { BlockHeader, Button, DashboardInput } from "../basic";
-import axios from "axios"
+import axios from "../axios/axios";
+import { useParams } from "react-router-dom";
 
 const BlockContainer = styled.div`
     width: 50vw;
@@ -65,6 +66,25 @@ export const Dashboard = () => {
     const [option3, setOption3] = useState("")
     const [option4, setOption4] = useState("")
     const [status, setStatus] = useState("")
+    const { questionId } = useParams()
+    
+    useEffect(() => {
+        if (questionId) {
+            axios.post(`/exercises/dashboard`, {id: questionId})
+            .then(res => {
+                const data = res.data.data
+                setQuestion(data.question)
+                setCategories(data.categories)
+                setReference(data.reference)
+                setDescription(data.description)
+                setDifficulty(data.difficulty)
+                setOption1(data.options[0].answer)
+                setOption2(data.options[1].answer)
+                setOption3(data.options[2].answer)
+                setOption4(data.options[3].answer)
+            })
+        }
+    }, [questionId])
 
     const resetState = () => {
         setQuestion("")
@@ -101,20 +121,32 @@ export const Dashboard = () => {
         }
         return newExercise
     }
+
+    const createQuestion = (data) => {
+        axios.post("/exercises", data)
+            .then(res => {
+                resetState()
+                setStatus("success")})
+            .catch(_ => {
+                setStatus("failure")
+            })
+    }
+
+    const updateQuestion = (data) => {
+        axios.put(`/exercises`, { id: questionId, data: data })
+            .then(res => {
+                setStatus("success")})
+            .catch(_ => {
+                setStatus("failure")
+            })
+    }
     
     const handleSubmit = () => {
         const newData = generateData()
-        const response = axios({
-            method: 'post',
-            url: "http://localhost:5000/exercises",
-            data: newData
-        }).then(res => {
-            console.log(res)
-            resetState()
-            setStatus("success")
-        }).catch(_ => {
-            setStatus("failure")
-        })
+        if (questionId != undefined)
+            updateQuestion(newData)
+        else
+            createQuestion(newData)
     }
 
     return(<>
@@ -134,8 +166,8 @@ export const Dashboard = () => {
                 <DashboardInput value={reference} onChange={e => setReference(e.target.value)}label="reference"></DashboardInput>
                 { status !== "" ?  
                     (status == "success" ? 
-                        <ResponseStatus isCorrect={true}>Question created successfully</ResponseStatus> :
-                        <ResponseStatus isCorrect={false}>Error while creating question</ResponseStatus>) :
+                        <ResponseStatus isCorrect={true}>Question {questionId != undefined ? "updated" : "created"} successfully</ResponseStatus> :
+                        <ResponseStatus isCorrect={false}>Error while {questionId != undefined ? "updating" : "creating"} question</ResponseStatus>) :
                     null
                 }
                 <Button onClick={handleSubmit}>Submit</Button>

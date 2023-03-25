@@ -5,6 +5,7 @@ import { Quiz } from "./Quiz";
 import { Exercise } from "./Exercise";
 import { Question } from "./Question";
 import { Dashboard } from "./Dashboard";
+import { ExerciseList } from "./ExerciseList";
 
 export {
     InitialForm,
@@ -13,5 +14,6 @@ export {
     Quiz,
     Exercise,
     Question,
-    Dashboard
+    Dashboard,
+    ExerciseList
 }

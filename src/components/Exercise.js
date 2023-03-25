@@ -4,7 +4,7 @@ import { ProfileStats,
          Answer } from "../basic";
 import { Question } from "./Question";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../axios/axios";
 
 const BlockContainer = styled.div`
     position: absolute;
@@ -42,17 +42,16 @@ export const Exercise = ({ topicId, categories }) => {
         initTotalPointsLS(0)
 
     useEffect(() => {
-        const response = axios({
-            method: 'get',
-            url: "http://localhost:5000/exercises",
-            responseType: "json",
-            params: {
-                topic: topicId,
-                categories: categories
-            }
-        }).then(response => {
-            setExercises(response.data.data)
-        })
+        const response = axios
+            .get("/exercises", {
+                params: {
+                    topic: topicId,
+                    categories: categories
+                }
+            })
+            .then(response => {
+                setExercises(response.data.data)
+            })
     }, [])
 
     const handleNextQuestion = () => {
